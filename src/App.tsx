@@ -1,12 +1,15 @@
 import React, { FC } from 'react';
 import { Provider } from 'react-redux';
 
-import { store } from '../init/store';
+import { store } from './saga/init/store';
+import { FlightList } from './pages/FlightList';
+import { Booking } from './pages/Booking';
 
 export const App: FC = () => {
   return (
     <Provider store={store}>
-      <h1>hi</h1>
+      <FlightList />
+      <Booking />
     </Provider>
   );
 };
