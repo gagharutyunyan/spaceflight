@@ -1,5 +1,9 @@
 import React, { FC } from 'react';
 
-export const Loader: FC = () => {
-  return <h1>Loader</h1>;
+type PropTypes = {
+  isFetching: boolean;
+};
+
+export const Loader: FC<PropTypes> = ({ isFetching }: PropTypes) => {
+  return isFetching ? <p>Loading data from API...</p> : null;
 };
