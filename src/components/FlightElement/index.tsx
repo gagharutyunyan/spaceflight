@@ -9,6 +9,5 @@ export const FlightElement: FC<FlightElementType> = ({
   const element = useTypedSelector((state) =>
     state.launches.fetchedData.results.find((el) => el.id === itemId)
   );
-  console.log(element);
   return <h1>{element?.name}</h1>;
 };

@@ -15,28 +15,28 @@ import {
 export const App: FC = (): ReactElement => {
   return (
     <Provider store={store}>
-      <Link to="/">home</Link>
-      <Link to="/board">Board</Link>
-      <Link to="/booking">booking</Link>
-      <Link to="/board/next">next</Link>
-      <Link to="/board/past">past</Link>
-      <Route path="/board" component={Board} />
+      <Link to="/spaceflight/">home </Link>
+      <Link to="/spaceflight/board">Board </Link>
+      <Link to="/spaceflight/booking">booking </Link>
+      <Link to="/spaceflight/board/next">next </Link>
+      <Link to="/spaceflight/board/past">past </Link>
+      <Route path="/spaceflight/board" component={Board} />
       <Route
-        path="/board/next"
+        path="/spaceflight/board/next"
         render={() => <FlightList fetchAsync={nextLaunchesFetchAsync()} />}
       />
       <Route
-        path="/board/past"
+        path="/spaceflight/board/past"
         render={() => <FlightList fetchAsync={pastLaunchesFetchAsync()} />}
       />
       <Route
-        path="/board/:id"
+        path="/spaceflight/board/:id"
         render={({ match }) => {
           const { id } = match.params;
           return <FlightElement itemId={id} />;
         }}
       />
-      <Route exact path="/booking" component={Booking} />
+      <Route exact path="/spaceflight/booking" component={Booking} />
     </Provider>
   );
 };
