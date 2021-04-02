@@ -1,7 +1,7 @@
 import { all } from 'redux-saga/effects';
 
-import { watchLaunches } from '../saga';
+import { watchFetchNextLaunches, watchFetchPastLaunches } from '../saga';
 
 export function* rootSaga(): Generator {
-  yield all([watchLaunches()]);
+  yield all([watchFetchNextLaunches(), watchFetchPastLaunches()]);
 }

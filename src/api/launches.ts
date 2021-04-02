@@ -1,18 +1,10 @@
 import { root } from './config';
-import { Launches } from '../store/storeTypes/launchesTypes';
-
-export type FetchDataType<T> = () => Promise<T>;
-
-type APIFetchDataType = {
-  launches: {
-    fetch: FetchDataType<Launches>;
-  };
-};
+import { Launches, APIFetchDataType } from '../types';
 
 export const api: APIFetchDataType = {
   launches: {
-    fetch: (): Promise<Launches> =>
-      fetch(`${root}/launches`, {
+    fetch: (uri: string): Promise<Launches> =>
+      fetch(`${root}${uri}`, {
         method: 'GET',
       })
         .then((response) => response.json())

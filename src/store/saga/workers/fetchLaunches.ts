@@ -7,7 +7,7 @@ import {
 } from '../../actions/launchesActions';
 
 // Types
-import { Launches } from '../../storeTypes/launchesTypes';
+import { Launches } from '../../../types';
 
 // Workers
 import { makeRequestWithSpinner } from './makeRequestWithSpinner';
@@ -15,9 +15,10 @@ import { makeRequestWithSpinner } from './makeRequestWithSpinner';
 // API
 import { api } from '../../../api/launches';
 
-export function* fetchLaunches(): Generator {
+export function* fetchLaunches(uri: string): Generator {
   const options = {
     fetcher: api.launches.fetch,
+    fetcherParam: uri,
     startFetching,
     stopFetching,
     fill,

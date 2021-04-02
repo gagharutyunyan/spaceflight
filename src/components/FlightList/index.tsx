@@ -1,10 +1,17 @@
 import React, { FC, ReactElement } from 'react';
-import { Error } from '../../components/Error';
-import { Loader } from '../../components/Loader';
 import { useLaunchesFetch } from '../../hooks/useLaunchesFetch';
+import {
+  pastLaunchesFetchAsync,
+  nextLaunchesFetchAsync,
+} from '../../store/actions/launchesActions';
+import { Error } from '../Error';
+import { Loader } from '../Loader';
+
 export const FlightList: FC = () => {
-  const { data, isFetching, error } = useLaunchesFetch();
-  console.log({ data, isFetching, error });
+  const { data, isFetching, error } = useLaunchesFetch(
+    pastLaunchesFetchAsync()
+  );
+
   return (
     <>
       <Error error={error} />

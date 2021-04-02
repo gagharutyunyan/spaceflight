@@ -1,8 +1,7 @@
 // Types
 import {
-  ErrorHttpAction,
-  Launches,
-  LAUNCHES_FETCH_ASYNC,
+  NEXT_LAUNCHES_FETCH_ASYNC,
+  PAST_LAUNCHES_FETCH_ASYNC,
   LAUNCHES_FILL,
   LAUNCHES_SET_FETCHING_ERROR,
   LAUNCHES_START_FETCHING,
@@ -10,7 +9,11 @@ import {
   LaunchesActionTypes,
   LaunchesFillAction,
   LaunchesSetFetchingErrorAction,
-} from '../storeTypes/launchesTypes';
+  NextLaunchesFetchAsyncAction,
+  PastLaunchesFetchAsyncAction,
+} from '../storeTypes';
+
+import { ErrorHttpAction, Launches } from '../../types';
 
 // Sync
 export function startFetching(): LaunchesActionTypes {
@@ -43,8 +46,14 @@ export function setfetchingError(
 }
 
 // Async
-export function fetchAsync(): LaunchesActionTypes {
+export function nextLaunchesFetchAsync(): NextLaunchesFetchAsyncAction {
   return {
-    type: LAUNCHES_FETCH_ASYNC,
+    type: NEXT_LAUNCHES_FETCH_ASYNC,
+  };
+}
+
+export function pastLaunchesFetchAsync(): PastLaunchesFetchAsyncAction {
+  return {
+    type: PAST_LAUNCHES_FETCH_ASYNC,
   };
 }

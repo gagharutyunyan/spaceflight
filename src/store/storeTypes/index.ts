@@ -1,12 +1,19 @@
-export type flight = {
-  name: string;
+import { Launches, ErrorHttpAction } from '../../types';
+
+export type FillActionType<T> = (
+  payload: T
+) => {
+  type: string;
+  payload: T;
 };
 
-export type Launches = {
-  results: flight[];
+export type ErrorActionType = (
+  payload: string
+) => {
+  type: string;
+  error: true;
+  payload: string;
 };
-
-export type ErrorHttpAction = string;
 
 // Sync
 export const LAUNCHES_START_FETCHING = 'LAUNCHES_START_FETCHING';
@@ -33,9 +40,14 @@ export type LaunchesSetFetchingErrorAction = {
 };
 
 // Async
-export const LAUNCHES_FETCH_ASYNC = 'LAUNCHES_FETCH_ASYNC';
-type LaunchesFetchAsyncAction = {
-  type: typeof LAUNCHES_FETCH_ASYNC;
+export const NEXT_LAUNCHES_FETCH_ASYNC = 'NEXT_LAUNCHES_FETCH_ASYNC';
+export type NextLaunchesFetchAsyncAction = {
+  type: typeof NEXT_LAUNCHES_FETCH_ASYNC;
+};
+
+export const PAST_LAUNCHES_FETCH_ASYNC = 'PAST_LAUNCHES_FETCH_ASYNC';
+export type PastLaunchesFetchAsyncAction = {
+  type: typeof PAST_LAUNCHES_FETCH_ASYNC;
 };
 
 export type LaunchesActionTypes =
@@ -43,4 +55,5 @@ export type LaunchesActionTypes =
   | LaunchesStopFetchingAction
   | LaunchesFillAction
   | LaunchesSetFetchingErrorAction
-  | LaunchesFetchAsyncAction;
+  | NextLaunchesFetchAsyncAction
+  | PastLaunchesFetchAsyncAction;

@@ -1,19 +1,14 @@
 import {
-  ErrorHttpAction,
-  Launches,
-  LAUNCHES_FETCH_ASYNC,
+  NEXT_LAUNCHES_FETCH_ASYNC,
+  PAST_LAUNCHES_FETCH_ASYNC,
   LAUNCHES_FILL,
   LAUNCHES_SET_FETCHING_ERROR,
   LAUNCHES_START_FETCHING,
   LAUNCHES_STOP_FETCHING,
   LaunchesActionTypes,
-} from '../storeTypes/launchesTypes';
+} from '../storeTypes';
 
-export type LaunchesState = {
-  data: Launches;
-  isFetching: boolean;
-  error: false | ErrorHttpAction;
-};
+import { LaunchesState } from '../../types';
 
 const initialState: LaunchesState = {
   data: {
@@ -33,7 +28,6 @@ export const launchesReducer = (
 
   switch (action.type) {
     case LAUNCHES_START_FETCHING:
-      console.log(state);
       return {
         ...state,
         isFetching: true,
@@ -51,14 +45,26 @@ export const launchesReducer = (
         error: action.payload,
       };
     case LAUNCHES_FILL:
+      if (Array.isArray(action.payload.results)) {
+        return {
+          ...state,
+          data: {
+            ...action.payload,
+          },
+          error: false,
+        };
+      }
       return {
         ...state,
         data: {
-          ...action.payload,
+          results: [action.payload.results],
         },
         error: false,
       };
-    case LAUNCHES_FETCH_ASYNC:
+
+    case NEXT_LAUNCHES_FETCH_ASYNC:
+      return state;
+    case PAST_LAUNCHES_FETCH_ASYNC:
       return state;
     default:
       return state;

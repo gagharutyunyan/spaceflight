@@ -1,18 +1,20 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { fetchAsync } from '../store/actions/launchesActions';
-import { LaunchesState } from '../store/reducers/launchesReducer';
 import { useTypedSelector } from './useTypedSelector';
+import { LaunchesState } from '../types';
+import { LaunchesActionTypes } from '../store/storeTypes';
 
-export const useLaunchesFetch = (): LaunchesState => {
+export const useLaunchesFetch = (
+  fetchAsync: LaunchesActionTypes
+): LaunchesState => {
   const dispatch = useDispatch();
   const { data, isFetching, error } = useTypedSelector((state) => {
     return state.launches;
   });
 
   useEffect(() => {
-    dispatch(fetchAsync());
+    dispatch(fetchAsync);
   }, [dispatch]);
 
   return { data, isFetching, error };
