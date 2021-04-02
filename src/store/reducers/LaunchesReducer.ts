@@ -7,7 +7,7 @@ import {
   LAUNCHES_START_FETCHING,
   LAUNCHES_STOP_FETCHING,
   LaunchesActionTypes,
-} from '../storeTypes';
+} from '../storeTypes/launchesTypes';
 
 export type LaunchesState = {
   data: Launches;

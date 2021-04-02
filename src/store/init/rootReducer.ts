@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { launchesReducer as launches } from '../reducers/LaunchesReducer';
+import { launchesReducer as launches } from '../reducers/launchesReducer';
 
 export const rootReducer = combineReducers({ launches });
 

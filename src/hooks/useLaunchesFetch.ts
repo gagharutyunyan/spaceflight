@@ -1,5 +1,19 @@
-type use = { isFetching: boolean; data: string[]; error: number };
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-export const useLaunchesFetch = (): use => {
-  return { isFetching: true, data: ['something', 'something'], error: 300 };
+import { fetchAsync } from '../store/actions/launchesActions';
+import { LaunchesState } from '../store/reducers/launchesReducer';
+import { useTypedSelector } from './useTypedSelector';
+
+export const useLaunchesFetch = (): LaunchesState => {
+  const dispatch = useDispatch();
+  const { data, isFetching, error } = useTypedSelector((state) => {
+    return state.launches;
+  });
+
+  useEffect(() => {
+    dispatch(fetchAsync);
+  }, [dispatch]);
+
+  return { data, isFetching, error };
 };
