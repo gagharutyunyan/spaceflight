@@ -6,7 +6,7 @@ import {
   LAUNCHES_START_FETCHING,
   LAUNCHES_STOP_FETCHING,
   LaunchesActionTypes,
-} from '../storeTypes';
+} from '../actionTypes';
 
 import { LaunchesState } from '../../types';
 
@@ -45,19 +45,20 @@ export const launchesReducer = (
         error: action.payload,
       };
     case LAUNCHES_FILL:
-      if (Array.isArray(action.payload.results)) {
+      if (!Array.isArray(action.payload.results)) {
         return {
           ...state,
           data: {
-            ...action.payload,
+            results: [action.payload.results],
           },
           error: false,
         };
       }
+      const newArr = action.payload.results.slice(0, 10);
       return {
         ...state,
         data: {
-          results: [action.payload.results],
+          results: newArr,
         },
         error: false,
       };

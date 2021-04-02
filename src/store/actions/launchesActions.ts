@@ -11,7 +11,7 @@ import {
   LaunchesSetFetchingErrorAction,
   NextLaunchesFetchAsyncAction,
   PastLaunchesFetchAsyncAction,
-} from '../storeTypes';
+} from '../actionTypes';
 
 import { ErrorHttpAction, Launches } from '../../types';
 

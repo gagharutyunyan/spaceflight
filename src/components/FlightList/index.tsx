@@ -1,16 +1,17 @@
 import React, { FC, ReactElement } from 'react';
 import { useLaunchesFetch } from '../../hooks/useLaunchesFetch';
-import {
-  pastLaunchesFetchAsync,
-  nextLaunchesFetchAsync,
-} from '../../store/actions/launchesActions';
+
 import { Error } from '../Error';
 import { Loader } from '../Loader';
+import { LaunchesActionTypes } from '../../store/actionTypes/index';
+import { FlightElement } from '../FlightElement';
 
-export const FlightList: FC = () => {
-  const { data, isFetching, error } = useLaunchesFetch(
-    pastLaunchesFetchAsync()
-  );
+type FlightList = {
+  fetchAsync: LaunchesActionTypes;
+};
+
+export const FlightList: FC<FlightList> = ({ fetchAsync }: FlightList) => {
+  const { data, isFetching, error } = useLaunchesFetch(fetchAsync);
 
   return (
     <>
@@ -18,7 +19,9 @@ export const FlightList: FC = () => {
       <Loader isFetching={isFetching} />
       {!isFetching &&
         data.results.map(
-          (flight): ReactElement => <h3 key={flight.id}>{flight.id}</h3>
+          (flight): ReactElement => (
+            <FlightElement key={flight.id} {...flight} />
+          )
         )}
     </>
   );

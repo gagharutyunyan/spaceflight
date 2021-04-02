@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { useTypedSelector } from './useTypedSelector';
 import { LaunchesState } from '../types';
-import { LaunchesActionTypes } from '../store/storeTypes';
+import { LaunchesActionTypes } from '../store/actionTypes';
 
 export const useLaunchesFetch = (
   fetchAsync: LaunchesActionTypes

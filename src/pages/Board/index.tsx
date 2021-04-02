@@ -1,6 +1,10 @@
 import React, { FC } from 'react';
-import { FlightList } from '../../components/FlightList';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 export const Board: FC = () => {
-  return <FlightList />;
+  const { data, isFetching, error } = useTypedSelector((state) => {
+    return state.launches;
+  });
+  console.log(data);
+  return <div>something</div>;
 };

@@ -6,7 +6,7 @@ interface IFlightLinks {
   wikipedia: string;
 }
 
-interface IFlight {
+export interface IFlight {
   name: string;
   id: string;
   flightNumber: number;

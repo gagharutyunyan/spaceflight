@@ -3,7 +3,7 @@ import { SagaIterator } from '@redux-saga/core';
 import { put, call } from 'redux-saga/effects';
 
 // types
-import { FillActionType, ErrorActionType } from '../../storeTypes';
+import { FillActionType, ErrorActionType } from '../../actionTypes';
 
 type OptionsType<T> = {
   fetcher: (uri: string) => Promise<T>;
