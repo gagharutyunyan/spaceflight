@@ -33,6 +33,7 @@ export const launchesReducer = (
 
   switch (action.type) {
     case LAUNCHES_START_FETCHING:
+      console.log(state);
       return {
         ...state,
         isFetching: true,

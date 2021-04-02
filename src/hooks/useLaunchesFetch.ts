@@ -12,7 +12,7 @@ export const useLaunchesFetch = (): LaunchesState => {
   });
 
   useEffect(() => {
-    dispatch(fetchAsync);
+    dispatch(fetchAsync());
   }, [dispatch]);
 
   return { data, isFetching, error };

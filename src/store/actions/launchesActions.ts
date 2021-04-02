@@ -10,7 +10,7 @@ import {
   LaunchesActionTypes,
   LaunchesFillAction,
   LaunchesSetFetchingErrorAction,
-} from '../storeTypes';
+} from '../storeTypes/launchesTypes';
 
 // Sync
 export function startFetching(): LaunchesActionTypes {
