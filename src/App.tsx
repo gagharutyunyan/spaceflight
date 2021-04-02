@@ -6,6 +6,7 @@ import { store } from './store';
 import { Board } from './pages/Board';
 import { Booking } from './pages/Booking';
 import { FlightList } from './components/FlightList';
+import { FlightElement } from './components/FlightElement';
 import {
   pastLaunchesFetchAsync,
   nextLaunchesFetchAsync,
@@ -20,7 +21,6 @@ export const App: FC = (): ReactElement => {
       <Link to="/board/next">next</Link>
       <Link to="/board/past">past</Link>
       <Route path="/board" component={Board} />
-
       <Route
         path="/board/next"
         render={() => <FlightList fetchAsync={nextLaunchesFetchAsync()} />}
@@ -29,7 +29,14 @@ export const App: FC = (): ReactElement => {
         path="/board/past"
         render={() => <FlightList fetchAsync={pastLaunchesFetchAsync()} />}
       />
-      <Route exact path="/booking" render={() => <Booking />} />
+      <Route
+        path="/board/:id"
+        render={({ match }) => {
+          const { id } = match.params;
+          return <FlightElement itemId={id} />;
+        }}
+      />
+      <Route exact path="/booking" component={Booking} />
     </Provider>
   );
 };

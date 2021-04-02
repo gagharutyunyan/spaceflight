@@ -4,25 +4,28 @@ import { useLaunchesFetch } from '../../hooks/useLaunchesFetch';
 import { Error } from '../Error';
 import { Loader } from '../Loader';
 import { LaunchesActionTypes } from '../../store/actionTypes/index';
-import { FlightElement } from '../FlightElement';
+import { FlightLink } from '../FlightLink';
 
 type FlightList = {
   fetchAsync: LaunchesActionTypes;
 };
 
 export const FlightList: FC<FlightList> = ({ fetchAsync }: FlightList) => {
-  const { data, isFetching, error } = useLaunchesFetch(fetchAsync);
+  const { fetchedData, isFetching, error } = useLaunchesFetch(fetchAsync);
 
   return (
     <>
       <Error error={error} />
       <Loader isFetching={isFetching} />
-      {!isFetching &&
-        data.results.map(
-          (flight): ReactElement => (
-            <FlightElement key={flight.id} {...flight} />
-          )
-        )}
+      {!isFetching && (
+        <ul>
+          {fetchedData.results.map(
+            (flight): ReactElement => (
+              <FlightLink key={flight.id} {...flight} />
+            )
+          )}
+        </ul>
+      )}
     </>
   );
 };

@@ -1,7 +1,14 @@
 import React, { FC } from 'react';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
-import { IFlight } from '../../types';
+import { FlightElementType } from '../../types';
 
-export const FlightElement: FC<IFlight> = (flight: IFlight) => {
-  return <h6>{flight.id}</h6>;
+export const FlightElement: FC<FlightElementType> = ({
+  itemId,
+}: FlightElementType) => {
+  const element = useTypedSelector((state) =>
+    state.launches.fetchedData.results.find((el) => el.id === itemId)
+  );
+  console.log(element);
+  return <h1>{element?.name}</h1>;
 };

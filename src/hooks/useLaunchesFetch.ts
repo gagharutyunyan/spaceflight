@@ -9,7 +9,7 @@ export const useLaunchesFetch = (
   fetchAsync: LaunchesActionTypes
 ): LaunchesState => {
   const dispatch = useDispatch();
-  const { data, isFetching, error } = useTypedSelector((state) => {
+  const { fetchedData, isFetching, error } = useTypedSelector((state) => {
     return state.launches;
   });
 
@@ -17,5 +17,5 @@ export const useLaunchesFetch = (
     dispatch(fetchAsync);
   }, [dispatch]);
 
-  return { data, isFetching, error };
+  return { fetchedData, isFetching, error };
 };

@@ -11,7 +11,7 @@ import {
 import { LaunchesState } from '../../types';
 
 const initialState: LaunchesState = {
-  data: {
+  fetchedData: {
     results: [],
   },
   isFetching: false,
@@ -48,7 +48,7 @@ export const launchesReducer = (
       if (!Array.isArray(action.payload.results)) {
         return {
           ...state,
-          data: {
+          fetchedData: {
             results: [action.payload.results],
           },
           error: false,
@@ -57,7 +57,7 @@ export const launchesReducer = (
       const newArr = action.payload.results.slice(0, 10);
       return {
         ...state,
-        data: {
+        fetchedData: {
           results: newArr,
         },
         error: false,

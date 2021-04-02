@@ -19,8 +19,12 @@ export type Launches = {
   results: IFlight[];
 };
 
+export type FlightElementType = {
+  itemId: string;
+};
+
 export type LaunchesState = {
-  data: Launches;
+  fetchedData: Launches;
   isFetching: boolean;
   error: false | ErrorHttpAction;
 };
