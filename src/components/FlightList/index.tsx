@@ -7,8 +7,16 @@ import { LaunchesActionTypes } from '../../store/actionTypes/index';
 import { FlightLink } from '../FlightLink';
 import styled from 'styled-components';
 
-const FlightListContainer = styled.div`
+const FlightListComponent = styled.div`
   display: flex;
+  justify-content: center;
+  max-width: 70vw;
+`;
+
+const FlightListContainer = styled.ul`
+  display: flex;
+  flex-direction: column;
+  border: 3px solid black;
 `;
 
 type PropTypes = {
@@ -19,18 +27,19 @@ export const FlightList: FC<PropTypes> = ({ fetchAsync }: PropTypes) => {
   const { fetchedData, isFetching, error } = useLaunchesFetch(fetchAsync);
 
   return (
-    <FlightListContainer>
+    <FlightListComponent>
       <Error error={error} />
       <Loader isFetching={isFetching} />
       {!isFetching && (
-        <ul>
+        <FlightListContainer>
+          //flights title, photo, id, name and etc
           {fetchedData.results.map(
             (flight): ReactElement => (
               <FlightLink key={flight.id} flight={flight} />
             )
           )}
-        </ul>
+        </FlightListContainer>
       )}
-    </FlightListContainer>
+    </FlightListComponent>
   );
 };
