@@ -3,10 +3,14 @@ import React, { FC } from 'react';
 import { IFlight } from '../../types';
 import { Link } from 'react-router-dom';
 
-export const FlightLink: FC<IFlight> = (flight: IFlight) => {
+type PropTypes = {
+  flight: IFlight;
+};
+
+export const FlightLink: FC<PropTypes> = ({ flight }: PropTypes) => {
   return (
     <li>
-      <Link to={`${flight.id}`}>{flight.name}</Link>
+      <Link to={`/board/${flight.id}`}>{flight.name}</Link>
     </li>
   );
 };

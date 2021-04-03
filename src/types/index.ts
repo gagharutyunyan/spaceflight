@@ -19,10 +19,6 @@ export type Launches = {
   results: IFlight[];
 };
 
-export type FlightElementType = {
-  itemId: string;
-};
-
 export type LaunchesState = {
   fetchedData: Launches;
   isFetching: boolean;
