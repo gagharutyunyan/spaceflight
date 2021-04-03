@@ -9,7 +9,7 @@ interface IFlightLinks {
 export interface IFlight {
   name: string;
   id: string;
-  flightNumber: number;
+  flight_number: number;
   date: string;
   details: string;
   links: IFlightLinks;
