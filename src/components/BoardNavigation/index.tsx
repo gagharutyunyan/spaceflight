@@ -5,21 +5,20 @@ import { NavigationLink } from '../NavLink';
 const NavBar = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 60px;
 `;
 
-export const Navigation: FC = () => {
+export const BoardNavigation: FC = () => {
   return (
     <NavBar>
       <NavigationLink
-        linkTo="/board"
-        linkName="Past and Next Launches"
-        fontSize="1.6em"
+        linkTo="/board/next"
+        linkName="Next Launches"
+        fontSize="1.3em"
       />
       <NavigationLink
-        linkTo="/booking"
-        linkName="Booking Launches"
-        fontSize="1.6em"
+        linkTo="/board/past"
+        linkName="Past Launches"
+        fontSize="1.3em"
       />
     </NavBar>
   );

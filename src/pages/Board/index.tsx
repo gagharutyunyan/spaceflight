@@ -4,10 +4,12 @@ import { Route } from 'react-router-dom';
 import { FlightList } from '../../components/FlightList';
 import { FlightElement } from '../../components/FlightElement';
 import { routes } from '../../api/boardRoutesData';
+import { BoardNavigation } from '../../components/BoardNavigation';
 
 export const Board: FC = () => {
   return (
     <>
+      <Route path="/board" render={() => <BoardNavigation />} />
       {routes.map((route) => {
         return (
           <Route
@@ -21,7 +23,7 @@ export const Board: FC = () => {
 
       <Route
         exact
-        path="/board/:id"
+        path="/flight/:id"
         render={({ match }) => {
           const { id } = match.params;
           return <FlightElement itemId={id} />;

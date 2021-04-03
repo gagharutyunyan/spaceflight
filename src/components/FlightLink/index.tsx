@@ -14,8 +14,7 @@ const StyledLink = styled(Link)`
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
+  border: 2px solid black;
   &:hover {
     background-color: palevioletred;
   }
@@ -36,8 +35,9 @@ const FlightNumber = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 40px;
-  height: 100%;
+  height: 41px;
   padding: 0 20px 0 20px;
   &::before {
     position: absolute;
@@ -51,8 +51,33 @@ const FlightNumber = styled.div`
 const FlightName = styled.span`
   position: relative;
   display: flex;
+  align-items: center;
   width: 140px;
+  height: 41px;
   padding: 0 20px 0 20px;
+  &::before {
+    position: absolute;
+    left: 0;
+    content: '';
+    border-left: 2px solid black;
+    height: 100%;
+  }
+`;
+
+const FlightDetails = styled.span`
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 400px;
+  height: 38px;
+  padding: 3px 20px 0 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-clamp: 2;
+  display: -webkit-box;
+  display: box;
+  word-wrap: break-word;
+  box-orient: vertical;
   &::before {
     position: absolute;
     left: 0;
@@ -69,10 +94,15 @@ type PropTypes = {
 export const FlightLink: FC<PropTypes> = ({ flight }: PropTypes) => {
   return (
     <List>
-      <StyledLink to={`/board/${flight.id}`}>
+      <StyledLink to={`/flight/${flight.id}`}>
         <Photo src={flight.links.patch.small} />
         <FlightNumber>{flight.flight_number}</FlightNumber>
         <FlightName> {flight.name}</FlightName>
+        <FlightDetails>
+          {flight.details
+            ? flight.details
+            : 'Details about launch is absent...'}
+        </FlightDetails>
       </StyledLink>
     </List>
   );

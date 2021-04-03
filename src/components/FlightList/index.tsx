@@ -11,6 +11,7 @@ const FlightListComponent = styled.div`
   display: flex;
   justify-content: center;
   max-width: 70vw;
+  min-height: 50vh;
 `;
 
 const FlightListContainer = styled.ul`
@@ -18,7 +19,6 @@ const FlightListContainer = styled.ul`
   flex-direction: column;
   margin: 0;
   padding: 0;
-  border: 3px solid black;
 `;
 
 type PropTypes = {
@@ -34,7 +34,6 @@ export const FlightList: FC<PropTypes> = ({ fetchAsync }: PropTypes) => {
       <Loader isFetching={isFetching} />
       {!isFetching && (
         <FlightListContainer>
-          //photo, flight number, name, details, date
           {fetchedData.results.map(
             (flight): ReactElement => (
               <FlightLink key={flight.id} flight={flight} />
