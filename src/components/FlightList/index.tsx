@@ -3,7 +3,7 @@ import { useLaunchesFetch } from '../../hooks/useLaunchesFetch';
 
 import { Error } from '../Error';
 import { Loader } from '../Loader';
-import { LaunchesActionTypes } from '../../store/actionTypes/index';
+import { LaunchesActionTypes } from '../../store/actionTypes/launchesActionTypes';
 import { FlightLink } from '../FlightLink';
 import styled from 'styled-components';
 

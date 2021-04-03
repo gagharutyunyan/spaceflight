@@ -6,7 +6,7 @@ import { takeEvery } from 'redux-saga/effects';
 import {
   NEXT_LAUNCHES_FETCH_ASYNC,
   PAST_LAUNCHES_FETCH_ASYNC,
-} from '../actionTypes';
+} from '../actionTypes/launchesActionTypes';
 
 // Workers
 import { fetchLaunches } from './workers/fetchLaunches';

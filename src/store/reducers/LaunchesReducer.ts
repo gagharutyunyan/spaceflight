@@ -6,7 +6,7 @@ import {
   LAUNCHES_START_FETCHING,
   LAUNCHES_STOP_FETCHING,
   LaunchesActionTypes,
-} from '../actionTypes';
+} from '../actionTypes/launchesActionTypes';
 
 import { LaunchesState } from '../../types';
 

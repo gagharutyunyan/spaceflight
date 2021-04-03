@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 import { FlightList } from '../../components/FlightList';
 import { FlightElement } from '../../components/FlightElement';
@@ -9,6 +9,7 @@ import { BoardNavigation } from '../../components/BoardNavigation';
 export const Board: FC = () => {
   return (
     <>
+      <Route exact path="/" render={() => <Redirect exact to="/board" />} />
       <Route path="/board" render={() => <BoardNavigation />} />
       {routes.map((route) => {
         return (

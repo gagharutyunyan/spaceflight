@@ -34,3 +34,11 @@ export type APIFetchDataType = {
     fetch: FetchDataType<Launches>;
   };
 };
+
+export type BookingState = {
+  [key: string]: {
+    name: string;
+    results: IFlight[];
+    isDragDisabled: boolean;
+  };
+};
