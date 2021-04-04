@@ -22,17 +22,17 @@ export const useBookingMockData = () => {
 
   const bookingData = {
     ['past']: {
-      name: 'past launches',
+      name: 'Past Launches',
       results: [...pastData],
       isDragDisabled: true,
     },
     ['next']: {
-      name: 'next launches',
+      name: 'Next Launches',
       results: [...nextData],
       isDragDisabled: false,
     },
     ['booked']: {
-      name: 'booked launches',
+      name: 'My launches',
       results: [],
       isDragDisabled: false,
     },
