@@ -22,7 +22,7 @@ const Details = styled.p``;
 
 const GoBack = styled.span`
   position: absolute;
-  top: 0;
+  top: -55px;
   right: 0;
   display: inline-block;
   background-color: white;
