@@ -7,10 +7,15 @@ export const useDragEnd = (
 ): void => {
   if (!result.destination) return;
   const { source, destination } = result;
-  if (destination.droppableId !== 'booked') {
+  console.log(source, destination);
+  if (destination.droppableId === 'next' && source.droppableId !== 'next') {
     // eslint-disable-next-line
-    let isAgree = confirm('Ты uveren?');
+    let isAgree = confirm('Вы уверены то хотите отменить бронирование?');
     if (!isAgree) return;
+  }
+  if (destination.droppableId === 'booked' && source.droppableId !== 'booked') {
+    // eslint-disable-next-line
+    alert('Рейс успешно бронирован');
   }
   if (source.droppableId !== destination.droppableId) {
     const sourceColumn = columns[source.droppableId];
