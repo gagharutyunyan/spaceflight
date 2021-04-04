@@ -26,7 +26,7 @@ export const Board: FC = () => {
             key={route.id}
             exact={route.exact}
             path={route.path}
-            render={() => <Redirect to={route.redirect} />}
+            render={() => <Redirect to={route.redirectTo} />}
           />
         );
       })}
