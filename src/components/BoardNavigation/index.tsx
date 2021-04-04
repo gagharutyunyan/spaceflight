@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { NavigationLink } from '../NavLink';
+import { NavigationLink } from '../NavigationLink';
 
 const NavBar = styled.div`
   display: flex;

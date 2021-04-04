@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { NavigationLink } from '../NavLink';
+import { NavigationLink } from '../NavigationLink';
 
 const NavBar = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ export const Navigation: FC = () => {
   return (
     <NavBar>
       <NavigationLink
-        linkTo="/board"
+        linkTo="/board/past"
         linkName="Past and Next Launches"
         fontSize="1.6em"
       />

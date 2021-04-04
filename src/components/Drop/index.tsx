@@ -18,12 +18,12 @@ const StyledDroppable = styled.div`
   border-radius: 5px;
 `;
 
-const StyledDroppableItem = styled.div`
+const Item = styled.div`
   background-color: white;
   padding: 13px;
 `;
 
-const StyledDroppableTitle = styled.h2`
+const Title = styled.h2`
   margin: 0;
   text-align: center;
 `;
@@ -36,7 +36,7 @@ type PropTypes = {
 export const Drop: FC<PropTypes> = ({ columnId, column }: PropTypes) => {
   return (
     <StyledBookingContainer>
-      <StyledDroppableTitle>{column.name}</StyledDroppableTitle>
+      <Title>{column.name}</Title>
       <StyledDroppable>
         <Droppable
           droppableId={columnId}
@@ -45,15 +45,12 @@ export const Drop: FC<PropTypes> = ({ columnId, column }: PropTypes) => {
         >
           {(provided) => {
             return (
-              <StyledDroppableItem
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
+              <Item {...provided.droppableProps} ref={provided.innerRef}>
                 {column.results.map((item, index) => {
                   return <Drag item={item} key={item.id} index={index} />;
                 })}
                 {provided.placeholder}
-              </StyledDroppableItem>
+              </Item>
             );
           }}
         </Droppable>

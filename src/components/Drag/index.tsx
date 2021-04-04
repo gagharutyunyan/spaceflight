@@ -14,14 +14,14 @@ const StyledDraggableContainer = styled.div`
     background-color: #ccc !important;
   }
 `;
-const StyledDraggableInfo = styled.div`
+const Info = styled.div`
   padding: 5px;
 `;
-const StyledDraggableName = styled.h4`
+const Name = styled.h4`
   margin: 0;
   padding: 0;
 `;
-const StyledDraggableDetails = styled.div`
+const Details = styled.div`
   height: 50px;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -32,8 +32,8 @@ const StyledDraggableDetails = styled.div`
   box-orient: vertical;
 `;
 
-const StyledDraggablePhoto = styled.img``;
-const StyledDraggableLink = styled(Link)`
+const Photo = styled.img``;
+const StyledLink = styled(Link)`
   display: flex;
   height: 80px;
   text-decoration: none;
@@ -66,17 +66,17 @@ export const Drag: FC<PropTypes> = ({ item, index }: PropTypes) => {
               ...provided.draggableProps.style,
             }}
           >
-            <StyledDraggableLink to={`/flight/${item.id}`}>
-              <StyledDraggableInfo>
-                <StyledDraggableName>{item.name}</StyledDraggableName>
-                <StyledDraggableDetails>
+            <StyledLink to={`/flight/${item.id}`}>
+              <Info>
+                <Name>{item.name}</Name>
+                <Details>
                   {item.details
                     ? item.details
                     : 'Details about launch is absent...'}
-                </StyledDraggableDetails>
-              </StyledDraggableInfo>
-              <StyledDraggablePhoto src={item.links.patch.large} />
-            </StyledDraggableLink>
+                </Details>
+              </Info>
+              <Photo src={item.links.patch.large} />
+            </StyledLink>
           </StyledDraggableContainer>
         );
       }}
