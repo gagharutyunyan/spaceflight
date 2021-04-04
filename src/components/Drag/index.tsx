@@ -15,24 +15,23 @@ const StyledDraggableContainer = styled.div`
   }
 `;
 const Info = styled.div`
-  padding: 5px;
+  padding: 10px;
 `;
 const Name = styled.h4`
   margin: 0;
   padding: 0;
 `;
 const Details = styled.div`
-  height: 50px;
-  text-overflow: ellipsis;
   overflow: hidden;
-  line-clamp: 3;
+  text-overflow: ellipsis;
   display: -webkit-box;
-  display: box;
-  word-wrap: break-word;
-  box-orient: vertical;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;
 
-const Photo = styled.img``;
+const Photo = styled.img`
+  width: 80px;
+`;
 const StyledLink = styled(Link)`
   display: flex;
   height: 80px;

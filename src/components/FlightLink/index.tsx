@@ -37,7 +37,6 @@ const FlightNumber = styled.div`
   justify-content: center;
   align-items: center;
   width: 40px;
-  height: 41px;
   padding: 0 20px 0 20px;
   &::before {
     position: absolute;
@@ -53,7 +52,6 @@ const FlightName = styled.span`
   display: flex;
   align-items: center;
   width: 140px;
-  height: 41px;
   padding: 0 20px 0 20px;
   &::before {
     position: absolute;
@@ -69,15 +67,13 @@ const FlightDetails = styled.span`
   display: flex;
   align-items: center;
   width: 400px;
-  height: 38px;
-  padding: 3px 20px 0 20px;
-  text-overflow: ellipsis;
+  margin: 5px;
+  padding: 0 15px 0 15px;
   overflow: hidden;
-  line-clamp: 2;
+  text-overflow: ellipsis;
   display: -webkit-box;
-  display: box;
-  word-wrap: break-word;
-  box-orient: vertical;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   &::before {
     position: absolute;
     left: 0;
