@@ -1,11 +1,6 @@
-import { pastLaunchesFetchAsync } from '../store/actions/launchesActions';
-import { useLaunchesFetch } from './useLaunchesFetch';
+import { Launches } from '../types';
 
-export const useBookingMockData = () => {
-  const { fetchedData, isFetching, error } = useLaunchesFetch(
-    pastLaunchesFetchAsync()
-  );
-
+export const useBookingMockData = (fetchedData: Launches) => {
   const pastData = fetchedData.results.slice(0, 7).map((el) => {
     return {
       ...el,
@@ -37,5 +32,5 @@ export const useBookingMockData = () => {
       isDragDisabled: false,
     },
   };
-  return { bookingData, isFetching, error };
+  return { bookingData };
 };

@@ -4,7 +4,24 @@ import {
 } from '../store/actions/launchesActions';
 
 export const routes = [
-  { path: '/board', exact: true, fetchAsync: pastLaunchesFetchAsync },
-  { path: '/board/past', exact: true, fetchAsync: pastLaunchesFetchAsync },
-  { path: '/board/next', exact: true, fetchAsync: nextLaunchesFetchAsync },
+  { id: 1, path: '/board', exact: true, fetchAsync: pastLaunchesFetchAsync },
+  {
+    id: 2,
+    path: '/board/past',
+    exact: true,
+    fetchAsync: pastLaunchesFetchAsync,
+  },
+  {
+    id: 3,
+    path: '/board/next',
+    exact: true,
+    fetchAsync: nextLaunchesFetchAsync,
+  },
+];
+
+export const redirectingRoutes = [
+  { id: 1, path: '/', exact: true, redirect: '/board/past' },
+  { id: 2, path: '/board/*', exact: true, redirect: '/board/past' },
+  { id: 3, path: '/board/past/*', exact: true, redirect: '/board/past' },
+  { id: 4, path: '/board/next/*', exact: true, redirect: '/board/next' },
 ];

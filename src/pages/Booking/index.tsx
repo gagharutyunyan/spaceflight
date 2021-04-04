@@ -6,7 +6,10 @@ import { Error } from '../../components/Error';
 import { Loader } from '../../components/Loader';
 import { Drop } from '../../components/Drop';
 import { useDragEnd } from '../../hooks/useDragEnd';
-import { BookingColumnsDataType, ErrorHttpAction } from '../../types';
+import { BookingColumnsDataType } from '../../types';
+import { useLaunchesFetch } from '../../hooks/useLaunchesFetch';
+import { pastLaunchesFetchAsync } from '../../store/actions/launchesActions';
+import { useBookingMockData } from '../../hooks/useBookingMockData';
 
 const StyledBooking = styled.div`
   display: flex;
@@ -14,17 +17,12 @@ const StyledBooking = styled.div`
   height: 100%;
 `;
 
-type PropTypes = {
-  bookingData: BookingColumnsDataType;
-  isFetching: boolean;
-  error: false | ErrorHttpAction;
-};
+export const Booking: FC = ({}) => {
+  const { fetchedData, isFetching, error } = useLaunchesFetch(
+    pastLaunchesFetchAsync()
+  );
+  const { bookingData } = useBookingMockData(fetchedData);
 
-export const Booking: FC<PropTypes> = ({
-  bookingData,
-  isFetching,
-  error,
-}: PropTypes) => {
   const [columns, setColumns] = useState<BookingColumnsDataType>({});
 
   useEffect(() => {
