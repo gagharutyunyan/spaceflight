@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import { Board } from '../Board';
 import { Booking } from '../Booking';
 import styled from 'styled-components';
+import { useBookingMockData } from '../../hooks/useBookingMockData';
 
 const MainContainer = styled.div`
   display: flex;
@@ -12,10 +13,16 @@ const MainContainer = styled.div`
 `;
 
 export const Main: FC = (): ReactElement => {
+  const bookingData = useBookingMockData();
+
   return (
     <MainContainer>
       <Board />
-      <Route exact path="/booking" component={Booking} />
+      <Route
+        exact
+        path="/booking"
+        render={() => <Booking {...bookingData} />}
+      />
     </MainContainer>
   );
 };

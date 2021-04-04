@@ -13,6 +13,7 @@ export interface IFlight {
   date: string;
   details: string;
   links: IFlightLinks;
+  isDragDisabled?: boolean;
 }
 
 export type Launches = {
@@ -35,7 +36,13 @@ export type APIFetchDataType = {
   };
 };
 
-export type BookingState = {
+export type BookingColumnDataType = {
+  name: string;
+  results: IFlight[];
+  isDragDisabled: boolean;
+};
+
+export type BookingColumnsDataType = {
   [key: string]: {
     name: string;
     results: IFlight[];
